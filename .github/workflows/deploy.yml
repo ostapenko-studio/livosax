@@ -28,3 +28,6 @@ jobs:
           path: dist
       - uses: actions/deploy-pages@v4
         id: deployment
+      - name: Notify IndexNow after publication
+        continue-on-error: true
+        run: python scripts/indexnow.py
