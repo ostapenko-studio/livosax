@@ -30,3 +30,5 @@ for f in ['index.html','style.css','app.js','CNAME','robots.txt','sitemap.xml','
  shutil.copy2(ROOT/f,out/f)
 shutil.copytree(ROOT/'assets',out/'assets',dirs_exist_ok=True)
 print(f'Built {len(videos)} performances into dist/')
+import seo
+seo.build(ROOT,videos)
