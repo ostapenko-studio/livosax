@@ -31,10 +31,14 @@ The sitemap contains the homepage plus eight video entries. `robots.txt` referen
 
 The two redirect checkouts are inside ignored `redirects/`. They use immediate HTML refresh with a JavaScript fallback, matching the existing Ostapenko Studio redirect approach. GitHub Pages does not provide custom server-side 301 rules. Both redirect sites declare the `.com` canonical and `noindex`.
 
-DNS is managed at Crazy Domains. Apex A records use GitHub’s four addresses: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153. Existing Google Workspace MX and verification TXT records on `.com` are preserved.
+DNS is managed at Crazy Domains. Apex A records use GitHub’s four addresses: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153. All three www hosts use CNAME records to ostapenko-studio.github.io. HTTPS is enabled for the main site and both redirect domains. Existing Google Workspace MX and verification TXT records on `.com` are preserved.
 
 ## Design
 
 Existing navy/gold channel identity with Avenir Next/system font stack. Responsive layout, keyboard focus, reduced motion support, semantic headings, native dialog, external-player fallback, and lightweight static HTML/CSS/JavaScript.
 
 Design canvas: https://superdesign.dev/teams/8aa2ecc4-bfb6-4544-9d40-452467b23f37/projects/52d03ac3-3f23-4571-9dfe-f351ff622b53
+
+## Search setup verified 18 September 2026
+
+Google Search Console domain property verified; sitemap status Success with 9 discovered pages and 8 videos. Bing Webmaster ownership verified and sitemap submitted (processing). IndexNow accepted all 9 URLs with HTTP 202; deployments notify IndexNow automatically. Search engines control crawling, indexing and rankings.
