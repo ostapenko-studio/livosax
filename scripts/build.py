@@ -11,7 +11,7 @@ for v in videos:
 
 def thumbnail(v, featured=False):
  vid=v['id']; name=escape(v['name'],quote=True)
- return f'''<a class="thumbnail {'featured-image' if featured else ''}" href="https://www.youtube.com/watch?v={vid}" data-video="{vid}" data-title="{name}" aria-label="Play {name}"><img src="https://i.ytimg.com/vi/{vid}/hqdefault.jpg" alt="{name} — Olivia playing alto saxophone" width="480" height="360" {'fetchpriority="high"' if featured else 'loading="lazy"'}><span class="play" aria-hidden="true">▶</span><span class="duration">{escape(v.get('duration',''))}</span></a>'''
+ return f'''<a class="thumbnail {'featured-image' if featured else ''}" href="https://www.youtube.com/watch?v={vid}" data-video="{vid}" data-title="{name}" aria-label="Play {name}"><img src="https://i.ytimg.com/vi/{vid}/maxresdefault.jpg" alt="{name} — Olivia playing alto saxophone" width="1280" height="720" {'fetchpriority="high"' if featured else 'loading="lazy"'}><span class="play" aria-hidden="true">▶</span><span class="duration">{escape(v.get('duration',''))}</span></a>'''
 
 cards='\n'.join(f'''<article class="video-card">{thumbnail(v)}<div class="card-meta"><span>ALTO SAXOPHONE</span><a href="https://www.youtube.com/watch?v={v['id']}" target="_blank" rel="noopener">YouTube ↗<span class="sr-only">: {escape(v['name'])}</span></a></div><h3><a href="https://www.youtube.com/watch?v={v['id']}" data-video="{v['id']}" data-title="{escape(v['name'],quote=True)}">{escape(v['name'])}</a></h3></article>''' for v in videos)
 first=videos[0]

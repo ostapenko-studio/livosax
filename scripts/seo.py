@@ -24,7 +24,7 @@ def build(root,videos):
  for v in videos:
   url=BASE+'/videos/'+v['slug']+'/'
   title=v['name']+' | Alto Saxophone Performance | livOsax'
-  thumb='https://i.ytimg.com/vi/'+v['id']+'/hqdefault.jpg'
+  thumb='https://i.ytimg.com/vi/'+v['id']+'/maxresdefault.jpg'
   embed='https://www.youtube-nocookie.com/embed/'+v['id']
   pub=datetime.fromisoformat(v['published']).strftime('%d %B %Y')
   exercise=re.search(r'#(\d+)',v['name']).group(1)
