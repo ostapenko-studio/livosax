@@ -16,11 +16,11 @@ Only `dist/` is published. Source files, scripts and design notes are not served
 
 ## Videos
 
-`videos.json` contains the eight public channel videos verified on 18 September 2026, including titles, durations, public publication timestamps and descriptions from YouTube. Add new **public** videos to this file and run the build. Private/unlisted videos must not be added without an explicit request. This version does not automatically sync future uploads.
+`videos.json` contains 12 public channel videos, updated on 29 September 2026. The performances are grouped by book: Essential Elements Book 1, 50 Pop Songs for Kids – Alto Sax, and 101 Movie Hits for Alto Sax. Publication dates use the confirmed day when an exact timestamp is unavailable. Add new **public** videos to this file and run the build. Private/unlisted videos must not be added without an explicit request. This version does not automatically sync future uploads. For each future publication, update this catalogue, build and check the relevant book attribution, then publish and verify the website too.
 
 Each video has a dedicated `/videos/<slug>/` page, a visible embedded player, canonical URL, unique metadata, VideoObject and BreadcrumbList JSON-LD, descriptive text, question-and-answer content and links to the other performances. The home page keeps a lightweight click-to-load player. No fabricated transcripts, reviews, statistics or lesson claims are used.
 
-The sitemap contains the homepage plus eight video entries. `robots.txt` references it. IndexNow verification is public by design: `indexnow-key.txt` supplies the generated root key file. After deployment and HTTPS verification, run `python3 scripts/indexnow.py` to notify participating search engines. Acceptance does not guarantee indexing.
+The sitemap contains the homepage plus 12 video entries. `robots.txt` references it. IndexNow verification is public by design: `indexnow-key.txt` supplies the generated root key file. After deployment and HTTPS verification, run `python3 scripts/indexnow.py` to notify participating search engines. Acceptance does not guarantee indexing.
 
 ## Domains
 
