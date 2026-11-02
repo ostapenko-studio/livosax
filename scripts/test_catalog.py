@@ -25,7 +25,13 @@ class CatalogTests(unittest.TestCase):
                 self.assertEqual(video['name'], v['title'])
                 self.assertEqual(video['duration'], f"PT{v['seconds']}S")
                 notes = page.split('<section class="piece-notes">')[1].split('</section>')[0]
-                if 'artist' in v:
+                if 'repertoire_list' in v:
+                    self.assertIn(v['repertoire_list'], notes)
+                    self.assertIn(v['book'], notes)
+                    self.assertIn('<dt>Repertoire list</dt>', notes)
+                    self.assertNotIn('<dt>Original artist</dt>', notes)
+                    self.assertNotIn('<dt>Exercise</dt>', notes)
+                elif 'artist' in v:
                     self.assertIn(v['artist'], notes)
                     self.assertIn(v['book'], notes)
                     self.assertNotIn('Essential Elements', notes)
@@ -34,7 +40,7 @@ class CatalogTests(unittest.TestCase):
                     self.assertIn('<dt>Exercise</dt>', notes)
                     self.assertIn('Essential Elements', notes)
         self.assertEqual(home.count('class="video-card"'), len(videos))
-        self.assertEqual(home.count('class="book-collection"'), 3)
+        self.assertEqual(home.count('class="book-collection"'), len({v.get('book', 'Essential Elements for Band, Book 1') for v in videos}))
         urls = ET.parse(ROOT / 'dist/sitemap.xml').findall('{http://www.sitemaps.org/schemas/sitemap/0.9}url')
         self.assertEqual(len(urls), len(videos) + 1)
 

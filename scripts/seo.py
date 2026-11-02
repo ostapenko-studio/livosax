@@ -30,7 +30,12 @@ def build(root,videos):
   match=re.search(r'#(\d+)',v['name'])
   exercise=match.group(1) if match else None
   book=v['book']
-  details=f'<div><dt>Exercise</dt><dd>#{exercise}</dd></div>' if exercise else f'<div><dt>Original artist</dt><dd>{h(v["artist"])}</dd></div>'
+  if v.get('repertoire_list'):
+   details=f'<div><dt>Repertoire list</dt><dd>{h(v["repertoire_list"])}</dd></div>'
+  elif exercise:
+   details=f'<div><dt>Exercise</dt><dd>#{exercise}</dd></div>'
+  else:
+   details=f'<div><dt>Original artist</dt><dd>{h(v["artist"])}</dd></div>'
   answer=f'{h(v["name"])}, exercise {exercise} in {h(book)}.' if exercise else h(v['summary'])
   practice='You can listen to this performance alongside your own copy of the book. It is a student performance, rather than a lesson or a substitute for your teacher’s guidance.'
   schema={'@context':'https://schema.org','@graph':[{'@type':'WebPage','@id':url,'url':url,'name':title,'description':v['summary'],'inLanguage':'en-AU','mainEntity':{'@id':url+'#video'}},{'@type':'VideoObject','@id':url+'#video','name':v['title'],'description':v['summary'],'thumbnailUrl':[thumb],'uploadDate':v['published'],'duration':f"PT{v['seconds']}S",'embedUrl':embed,'url':url,'inLanguage':'en','isFamilyFriendly':True,'publisher':{'@type':'Organization','name':'livOsax','url':BASE+'/','sameAs':['https://www.youtube.com/@livosax']}},{'@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'livOsax','item':BASE+'/'},{'@type':'ListItem','position':2,'name':v['name'],'item':url}]}]}
