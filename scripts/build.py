@@ -21,6 +21,11 @@ def card(v):
 collections=[]
 for book in dict.fromkeys(v['book'] for v in videos):
  group=[v for v in videos if v['book']==book]
+ if book == 'Essential Elements for Band, Book 1':
+  def exercise_number(video):
+   number = re.search(r'#(\d+)', video['name'])
+   return int(number[1]) if number else float('inf')
+  group.sort(key=exercise_number)
  collections.append(f'<section class="book-collection"><h3>{escape(book)}</h3><div class="video-grid">'+''.join(card(v) for v in group)+'</div></section>')
 cards=''.join(collections)
 first=videos[0]
